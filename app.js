@@ -5,6 +5,44 @@ var userImage = document.getElementById("image");
 var ShowImage = document.getElementById("ShowImage");
 var changeBg = document.getElementById("changeBg");
 var body = document.getElementById("body");
+var googleLogin = document.getElementById("googleLogin");
+
+googleLogin.addEventListener("click", async function () {
+  var auth = firebase.auth();
+  var googleProdvider = new firebase.auth.GoogleAuthProvider();
+
+  await firebase
+    .auth()
+    .signInWithPopup(googleProdvider)
+    .then(async (resp) => {
+      console.log(resp.user.displayName);
+      console.log(resp.user.photoURL);
+      console.log(resp.user.uid);
+      console.log(resp.user.phoneNumber);
+
+      var object = {
+        email: resp.user.email,
+        name: resp.user.displayName,
+        dateofBirth: "",
+        number: "",
+        uid: resp.user.uid,
+        userImage: resp.user.photoURL,
+      };
+
+      console.log(object)
+
+      await firebase.database().ref("Users").child(resp.user.uid).set(object)
+       alert("save succeffully")
+        localStorage.setItem("userLogin",true)
+            localStorage.setItem("email",resp.user.email)
+            localStorage.setItem("userUid",resp.user.uid)
+            window.location.href="./user dashboard/index.html"
+     
+    })
+    .catch((e) => {
+      console.log(e);
+    });
+});
 
 var checkLast = "";
 
@@ -84,7 +122,7 @@ function ImageSizeCheck() {
     alert("please select image");
     return false;
   } else {
-    var size = userImage.files[0].size / 1024 / 1024;
+    var size = userImage.files[0].size / 1024 / 1024; // size mb
 
     if (size > 2) {
       alert("select image less then 2 mb");
@@ -95,7 +133,7 @@ function ImageSizeCheck() {
   }
 }
 
-function signUp() {
+async function signUp() {
   event.preventDefault();
   var email = document.getElementById("email").value;
   var password = document.getElementById("password").value;
@@ -118,14 +156,14 @@ function signUp() {
     if (sizeCheck == false) {
       return;
     } else {
-      loadingimg.style.display = "inline";
-      submit.style.display = "none";
+      loadingimg.style.display = "inline"; //loading
+      submit.style.display = "none"; //submot button disabled
 
-      auth
+      await auth
         .createUserWithEmailAndPassword(email, password)
         .then(async (userdata) => {
           var user = userdata;
-          console.log(userdata.user.uid);
+          console.log(userdata.user.uid); //user uid
 
           var userProfileUrl = await uploadImage();
 
@@ -139,7 +177,7 @@ function signUp() {
             userImage: userProfileUrl,
           };
 
-          await db.ref("Users").child(userdata.user.uid).set(object);
+          await db.ref("Users").child(userdata.user.uid).set(object); //set data
 
           alert("Sign up Successfully");
 

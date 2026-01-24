@@ -10,12 +10,12 @@ function setTheme(){
 setTheme()
 
 function logIn() {
-  event.preventDefault();
+  event.preventDefault(); //page refresh
   var email = document.getElementById("email").value;
   var password = document.getElementById("password").value;
 
-  const auth = firebase.auth();
-  var db = firebase.database();
+  const auth = firebase.auth(); // auth
+  var db = firebase.database(); //db
 
   if (email == "" && password == "") {
     alert("ENTER EMAIL AND PASSWORD");
