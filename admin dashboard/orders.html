@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders - AdminPro</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .div{
+            display: inline-block;
+            width: 200px;
+            /* border: 1px solid red; */
+            text-align: center;
+            /* margin: 5px;
+            padding: 5px; */
+        }
+    </style>
+</head>
+<body>
+    <div class="dashboard-layout">
+        <div id="sidebar-container"></div>
+        <div class="main-content">
+            <div class="header">
+                <h1 class="page-title">Orders</h1>
+                <button class="btn btn-sm" onclick="openModal()">+ Add Order</button>
+            </div>
+
+            <div class="table-container">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Total</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                        <!-- Data here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <!-- <button onclick="deleteoRER()">deleteoRER</button> -->
+
+    <!-- Modal -->
+    <div class="modal" id="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modal-title">Edit Order</h2>
+                <button class="close-modal" onclick="closeModal()">&times;</button>
+            </div>
+            <form id="modal-form">
+                <input type="hidden" id="edit-id">
+                <div class="form-group">
+                    <label class="form-label">Customer Name</label>
+                    <input type="text" class="form-input" id="ord-user" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Total Amount</label>
+                    <input type="number" class="form-input" id="ord-total" required>
+                </div>
+
+                <div class="form-group" id="itemsDetails">
+                  
+                   
+                    
+                </div>
+
+                <button>View All Items</button>
+
+                <div class="form-group">
+                    <label class="form-label">Status</label>
+                    <select class="form-input" id="ord-status" required>
+                        <option value="Pending">Pending</option>
+                         <option value="Accepted">Accepted</option>
+                        <option value="Completed">Completed</option>
+                        <option value="Rejected">Rejected</option>
+                    </select>
+                </div>
+                <button type="submit" class="btn save" >Save</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        // checkAuth();
+        document.getElementById('sidebar-container').innerHTML = getSidebar();
+
+        let orders = getData('orders');
+        // const tableBody = document.getElementById('table-body');
+       
+
+       
+        // function openModal(id = null) {
+        //     document.getElementById('edit-id').value = id || '';
+        //     document.getElementById('modal-title').textContent = id ? 'Edit Order' : 'Add Order';
+        //     if (id) {
+        //         const o = orders.find(ord => ord.id === id);
+        //         document.getElementById('ord-user').value = o.user;
+        //         document.getElementById('ord-total').value = o.total;
+        //         document.getElementById('ord-status').value = o.status;
+        //     } else {
+        //         modalForm.reset();
+        //     }
+        //     modal.classList.add('active');
+        // }
+
+    
+        // function edit(id) {
+        //     openModal(id);
+        // }
+
+        // function del(id) {
+        //     if(confirm('Are you sure?')) {
+        //         orders = orders.filter(o => o.id !== id);
+        //         setData('orders', orders);
+        //         render();
+        //     }
+        // }
+
+        // modalForm.onsubmit = (e) => {
+        //     e.preventDefault();
+        //     const id = document.getElementById('edit-id').value;
+        //     const user = document.getElementById('ord-user').value;
+        //     const total = document.getElementById('ord-total').value;
+        //     const status = document.getElementById('ord-status').value;
+
+        //     if (id) {
+        //         const index = orders.findIndex(o => o.id == id);
+        //         orders[index] = { id: parseInt(id), user, total: parseInt(total), status };
+        //     } else {
+        //         const newId = orders.length > 0 ? Math.max(...orders.map(o => o.id)) + 1 : 101;
+        //         orders.push({ id: newId, user, total: parseInt(total), status });
+        //     }
+        //     setData('orders', orders);
+        //     render();
+        //     closeModal();
+        // };
+
+        // render();
+    </script>
+
+     <script src="https://www.gstatic.com/firebasejs/12.7.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.7.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.7.0/firebase-database-compat.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyAclrl8JXJB-N9EsOV0nJFvzhiaVxNhLH0",
+        authDomain: "ecom-app-8a0f8.firebaseapp.com",
+        databaseURL: "https://ecom-app-8a0f8-default-rtdb.firebaseio.com",
+        projectId: "ecom-app-8a0f8",
+        storageBucket: "ecom-app-8a0f8.firebasestorage.app",
+        messagingSenderId: "557396142894",
+        appId: "1:557396142894:web:6649927edb7cd5281ce8bf",
+      };
+
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="orders.js"></script>
+</body>
+</html>
