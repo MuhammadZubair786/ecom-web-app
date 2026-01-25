@@ -7,6 +7,7 @@ function getAllAddTocard() {
   console.log(items);
   var calculatePrice = 0;
   tdata.innerHTML = "";
+  
 
   for (var i = 0; i < items.length; i++) {
     console.log(items[i]);
@@ -49,7 +50,7 @@ function increment(key) {
   getAllAddTocard();
 }
 
-1
+1;
 
 function decrement(key) {
   console.log(key);
@@ -79,16 +80,22 @@ async function orderPlace() {
       orderStatus: "pending",
       userEamil: items[0]["email"],
       userId: items[0]["userId"],
-      totalPrice:totalAmount.innerText
+      totalPrice: totalAmount.innerText,
     };
     console.log(object);
 
-    await firebase.database().ref("Orders").child(orderKey).set(object)
-    alert("order place successfully")
-    localStorage.setItem("addToCard",JSON.stringify([]))
-    tdata.innerHTML=""
-    totalAmount.innerText=""
-    window.location.href="./index.html"
-    
+    await firebase.database().ref("Orders").child(orderKey).set(object);
+    await SendEmailForOrder(object).then((snap) => {
+      alert("order place successfully");
+      localStorage.setItem("addToCard", JSON.stringify([]));
+      tdata.innerHTML = "";
+      totalAmount.innerText = "";
+      window.location.href = "./index.html";
+    });
   }
 }
+
+var data = {
+  name: "test",
+};
+//

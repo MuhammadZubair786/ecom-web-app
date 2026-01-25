@@ -17,7 +17,7 @@ async function getAllOrder() {
     .then((Snap) => {
       console.log(Snap.val());
       var data = Object.values(Snap.val()); //convert array
-          tableBody.innerHTML=""
+      tableBody.innerHTML = "";
 
       for (var i = 0; i < data.length; i++) {
         tableBody.innerHTML += `
@@ -110,16 +110,40 @@ btn[0].addEventListener("click", async function () {
       console.log(data);
 
       await firebase.database().ref("Orders").child(selectedOrderkey).set(data);
-      alert("order status update ")
-      getAllOrder()
-      closeModal()
-      
+      await updateOrder(data).then((snap) => {
+        alert("order status update ");
+        getAllOrder();
+        closeModal();
+      });
+
       // cnors jobs
       // Snap.val()
     })
     .catch((e) => {});
 });
 
-async function deleteoRER(){
-   await firebase.database().ref("Orders").remove()
+async function updateOrder(data) {
+  data["tax"] = (data["totalPrice"] * 20) / 100;
+  data["email"] = data["userEamil"];
+  data["totalOrderPrice"] = Number(data["totalPrice"]) + Number(data["tax"]);
+  console.log(data);
+
+  console.log(emailjs);
+  emailjs.init({
+    publicKey: "publickey",
+  });
+
+
+
+ await emailjs.send("service_id","templateid",data)
+  .then((data)=>{
+    console.log(data)
+  })
+  .catch((e)=>{
+    console.log(e)
+  })
+}
+
+async function deleteoRER() {
+  await firebase.database().ref("Orders").remove();
 }
