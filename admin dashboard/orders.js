@@ -124,7 +124,7 @@ btn[0].addEventListener("click", async function () {
 
 async function updateOrder(data) {
   data["tax"] = (data["totalPrice"] * 20) / 100;
-  data["email"] = data["userEamil"];
+  data["email"] = data["userEamil"]; //send admin to user
   data["totalOrderPrice"] = Number(data["totalPrice"]) + Number(data["tax"]);
   console.log(data);
 

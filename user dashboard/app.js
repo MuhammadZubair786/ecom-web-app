@@ -79,11 +79,9 @@ function setEmailJsConfigure() {
 
 async function SendEmailForOrder(data) {
   data["tax"]=(data["totalPrice"]*20/100)
-  data["email"]= "newsmit@yopmail.com"
+  data["email"]= "newsmit@yopmail.com"  //user order => admin send 
   data["totalOrderPrice"]= Number(data["totalPrice"])+Number(data["tax"])
   console.log(data);
-
-
   console.log(emailjs);
   emailjs.init({
     publicKey: "publickey",

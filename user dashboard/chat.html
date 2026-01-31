@@ -4,37 +4,39 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB"
       crossorigin="anonymous"
     />
+    <link rel="stylesheet" href="chat.css" />
   </head>
-  <body>
-    <h1>Welcome to my store</h1>
-    <a href="./order.html">Orders</a>
-    <a href="#" id="logout">Logout </a>
-    <a href="./chat.html">Chat </a>
+  <body onload="loadfunction()">
+    <h1>Chat with admin</h1>
 
-
-    <div class="container">
-      <div class="row" id="category">
-        <img
-          src="https://upload.wikimedia.org/wikipedia/commons/c/c7/Loading_2.gif?20170503175831"
-          style="
-            height: 200px;
-            width: 300px;
-            text-align: center;
-            display: block;
-            margin: auto;
-          "
-          alt=""
-        />
+    <div class="container maincontainer">
+      <div class="row" id="chats">
+        <div class="col" >
+          <!-- <h3 class="send">
+            <b class="chatcontainer"> Hello </b>
+          </h3>
+          <h3 class="recieve">
+            <b class="chatcontainer"> Hello </b>
+          </h3> -->
+        </div>
       </div>
     </div>
-
+    <div class="container sendcontainer">
+      <div class="row">
+        <div class="col col-lg-8">
+          <input type="text" placeholder="enter message"  id="input"/>
+        </div>
+        <div class="col col-lg-4">
+          <button id="sendBtn">send message</button>
+        </div>
+      </div>
+    </div>
     <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/12.6.0/firebase-database-compat.js"></script>
@@ -52,11 +54,6 @@
 
       firebase.initializeApp(firebaseConfig);
     </script>
-
-    <script
-      type="text/javascript"
-      src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"
-    ></script>
-    <script src="./app.js"></script>
+    <script src="./chat.js"></script>
   </body>
 </html>
