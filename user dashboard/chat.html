@@ -15,22 +15,23 @@
   <body onload="loadfunction()">
     <h1>Chat with admin</h1>
 
-    <div class="container maincontainer">
-      <div class="row" id="chats">
-        <div class="col" >
-          <!-- <h3 class="send">
-            <b class="chatcontainer"> Hello </b>
-          </h3>
-          <h3 class="recieve">
-            <b class="chatcontainer"> Hello </b>
-          </h3> -->
+    <div class="container maincontainer" id="chats">
+      <div class="row">
+        <div class="col col-lg-12 text-center">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/b/b1/Loading_icon.gif"
+            id="loadingimg"
+            width="100"
+            height="100"
+            alt=""
+          />
         </div>
       </div>
     </div>
     <div class="container sendcontainer">
       <div class="row">
         <div class="col col-lg-8">
-          <input type="text" placeholder="enter message"  id="input"/>
+          <input type="text" placeholder="enter message" id="input" />
         </div>
         <div class="col col-lg-4">
           <button id="sendBtn">send message</button>
