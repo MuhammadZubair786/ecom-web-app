@@ -89,7 +89,9 @@ function getSidebar() {
         { name: 'Categories', href: 'categories.html' },
         { name: 'Products', href: 'products.html' },
         { name: 'Orders', href: 'orders.html' },
-        { name: 'Users', href: 'users.html' }
+        { name: 'Users', href: 'users.html' },
+        { name: 'Chats', href: 'chats.html' }
+
     ];
 
     return `

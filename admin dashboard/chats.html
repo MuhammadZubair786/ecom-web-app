@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="chats.css">
+
+
+  </head>
+  <body>
+    <div class="container-layout">
+      <div id="sidebar-container"></div>
+      <div class="main-content">
+      <div class="chat-layout">
+
+  <!-- USER LIST -->
+  <div class="user-panel" id="user-panel">
+    <h2>Users</h2>
+    
+
+    <!-- <div class="user-item active">
+      <img src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg" />
+      <span>Ali</span>
+    </div>
+
+    <div class="user-item">
+      <img src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg" />
+      <span>Ahmed</span>
+    </div>
+
+    <div class="user-item">
+      <img src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg" />
+      <span>Fatima</span>
+    </div> -->
+  </div>
+
+  <!-- CHAT PANEL -->
+  <div class="chat-panel "  id="select" style="display: none;">
+
+    <div class="chat-header">
+      <img id="selectUserImage" src="https://img.freepik.com/free-vector/blue-circle-with-white-user_78370-4707.jpg" />
+      <h3  id="selectUserName" >Ali</h3>
+    </div>
+
+    <div class="chat-messages">
+      <div class="message received">Hello 👋</div>
+      <div class="message sent">Hi, how are you?</div>
+      <div class="message received">I’m good, you?</div>
+    </div>
+
+    <div class="chat-input">
+      <input type="text" placeholder="Type a message..." />
+      <button>Send</button>
+    </div>
+
+  </div>
+
+  <div class="chat-panel " id="unselect" style="background-color: red;">
+    select user for chat
+  </div>
+
+</div>
+        
+      
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/12.7.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/12.7.0/firebase-database-compat.js"></script>
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyAclrl8JXJB-N9EsOV0nJFvzhiaVxNhLH0",
+        authDomain: "ecom-app-8a0f8.firebaseapp.com",
+        databaseURL: "https://ecom-app-8a0f8-default-rtdb.firebaseio.com",
+        projectId: "ecom-app-8a0f8",
+        storageBucket: "ecom-app-8a0f8.firebasestorage.app",
+        messagingSenderId: "557396142894",
+        appId: "1:557396142894:web:6649927edb7cd5281ce8bf",
+      };
+
+      firebase.initializeApp(firebaseConfig);
+    </script>
+    <script src="script.js"></script>
+    <script src="chat.js"></script>
+  </body>
+</html>
