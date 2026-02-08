@@ -44,15 +44,13 @@
       <h3  id="selectUserName" >Ali</h3>
     </div>
 
-    <div class="chat-messages">
-      <div class="message received">Hello 👋</div>
-      <div class="message sent">Hi, how are you?</div>
-      <div class="message received">I’m good, you?</div>
+    <div class="chat-messages" id="messages">
+     
     </div>
 
     <div class="chat-input">
-      <input type="text" placeholder="Type a message..." />
-      <button>Send</button>
+      <input type="text" placeholder="Type a message..." id="messageInput" />
+      <button onclick="sendMessage()" >Send</button>
     </div>
 
   </div>
